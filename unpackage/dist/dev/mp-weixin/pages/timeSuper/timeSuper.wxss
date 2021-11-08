@@ -1,0 +1,45 @@
+
+page {
+	background: #f2f2f2;
+}
+.caption {
+	font-size:30rpx;
+	padding: 30rpx 0 0 20rpx;
+	margin-bottom: 30rpx;
+}
+.list {
+	background: #FFFFFF;
+	padding: 30rpx;
+}
+.list .date {
+	font-size: 30rpx;
+	color: #333333;
+}
+.list .time {
+	color: #999;
+	margin-left: 20rpx;
+}
+.item {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.add{
+	background: #c13b3b;
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 50%;
+	position: fixed;
+	right: 20rpx;
+	bottom: 140rpx;
+}
+.add image{
+	width: 60rpx;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	position: absolute;
+}
+

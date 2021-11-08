@@ -1,0 +1,23 @@
+.list {
+  clear: both;
+  overflow: hidden;
+  margin-top: 80rpx;
+}
+.list view {
+  width: 33%;
+  float: left;
+  text-align: center;
+}
+.list view image {
+  width: 50%;
+}
+.list view text {
+  display: block;
+  font-size: 32rpx;
+}
+.zpInfo {
+  width: 100%;
+  margin: 0 auto 0 auto;
+  display: block;
+}
+

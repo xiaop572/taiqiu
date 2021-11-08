@@ -1,0 +1,1 @@
+<view><hans-tabber style="position:fixed;bottom:0;width:100%;left:0;right:0;" vue-id="d01cb1fc-1" list="{{lists}}" currents="{{currents}}" data-event-opts="{{[['^tabChange',[['tabChange']]]]}}" bind:tabChange="__e" bind:__l="__l"></hans-tabber></view>

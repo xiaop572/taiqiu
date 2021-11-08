@@ -1,0 +1,16 @@
+.u-upload {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.Input {
+  width: 600rpx;
+  margin: 40rpx auto 0 auto;
+}
+.submit {
+  width: 80%;
+  color: #FFFFFF;
+  background: #44652e;
+  margin-top: 100rpx;
+}
+
