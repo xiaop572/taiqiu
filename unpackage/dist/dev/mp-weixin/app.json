@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/editInfo/editInfo",
+    "pages/problem/problem",
     "pages/index/index",
     "pages/register/register",
     "pages/home/home",
@@ -14,6 +16,5 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }
