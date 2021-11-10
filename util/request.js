@@ -3,7 +3,6 @@ import {baseUrl} from './config.js'
 export function req(url,params){
 	return new Promise((resolve,reject)=>{
 		let token=uni.getStorageSync('token');
-		console.log(token)
 		uni.request({
 			url:baseUrl+url,
 			header:{

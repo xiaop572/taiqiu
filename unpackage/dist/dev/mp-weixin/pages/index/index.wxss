@@ -33,7 +33,7 @@
 	font-size: 36rpx;
 	color: #8f8f94;
 }
-.loginBtn{
+.loginBtn {
 	width: 80%;
 	color: #FFFFFF;
 	background: #44652e;

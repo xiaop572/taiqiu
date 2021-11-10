@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "u-upload": "/node-modules/uview-ui/components/u-upload/u-upload",
+    "u-input": "/node-modules/uview-ui/components/u-input/u-input"
+  }
+}

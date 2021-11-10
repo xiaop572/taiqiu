@@ -1,13 +1,12 @@
 <template>
 	<view class="my">
 		<view class="myHeader">
-			<img :src="userInfo.avatar" alt="" class="avatar">
-			<text>{{userInfo.nickname}}</text>
+			<image :src="userInfo.avatarUrl" mode="widthFix" class="avatar">
+			<text>{{userInfo.nickName}}</text>
 		</view>
 		<u-cell-group>
 			<u-cell-item  title="个人信息" @click="rEditInfo"></u-cell-item>
-			<u-cell-item  title="联系驻场" @click="rContact"></u-cell-item>
-			<u-cell-item  title="投诉建议" @click="report"></u-cell-item>
+			<u-cell-item  title="常见问题" @click="report"></u-cell-item>
 			
 		</u-cell-group>
 		<tab-bar></tab-bar>
@@ -44,7 +43,7 @@
 				})
 			}
 		},
-		onLoad() {
+		mounted() {
 			this.userInfo = uni.getStorageSync("userInfo");
 		}
 	}

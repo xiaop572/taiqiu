@@ -1,17 +1,20 @@
 <template>
 	<view class="register">
-		<u-upload max-count="1" upload-text="上传照片" ref="uUpload" :before-upload="upload"></u-upload>
+		<u-upload max-count="1" upload-text="上传照片" ref="uUpload" :action="action" on-success="uploadSuccess"></u-upload>
 		<view class="Input">
-			<u-input v-model="value" :type="type" :border="border" placeholder="真实姓名"/>
+			<u-input v-model="value" :type="type" :border="border" placeholder="真实姓名" />
 		</view>
 		<view class="Input">
-			<u-input v-model="value" :type="type" :border="border" placeholder="身份证号"/>
+			<u-input v-model="value" :type="type" :border="border" placeholder="身份证号" />
 		</view>
 		<button class="submit" @click="submit">注册</button>
 	</view>
 </template>
 
 <script>
+	import {
+		baseUrl
+	} from '../../util/config.js'
 	export default {
 		data() {
 			return {
@@ -19,32 +22,39 @@
 					mobile: '',
 					captcha: ''
 				},
-				border:"1px solid #ccc"
+				action: baseUrl + '/newapi/api/user/uploadimg',
+				border: "1px solid #ccc"
 			}
 		},
 		methods: {
-			upload() {
-				console.log(this.$refs.uUpload.lists)
+			uploadSuccess(data) {
+				console.log(data, "上传成功")
 			},
-			submit(){
-				uni.navigateTo({
-					url:"../home/home"
+			submit() {
+				let files = [];
+				files = this.$refs.uUpload.lists.filter(val => {
+					return val.progress == 100;
 				})
+				console.log(files)
+				// uni.navigateTo({
+				// 	url:"../home/home"
+				// })
 			}
 		}
 	}
 </script>
 
 <style lang="less">
-
 	.u-upload {
 		justify-content: center;
 	}
-	.Input{
+
+	.Input {
 		width: 600rpx;
-		margin:40rpx auto 0 auto;
+		margin: 40rpx auto 0 auto;
 	}
-	.submit{
+
+	.submit {
 		background: #44652e;
 		width: 80%;
 		color: #FFFFFF;

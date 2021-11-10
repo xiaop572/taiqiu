@@ -14,7 +14,7 @@
 			</view>
 		</u-swipe-action>
 		<tab-bar></tab-bar>
-		<view class="add">
+		<view class="add" @click="rAddTime">
 			<image src="../../static/add.png" mode="widthFix"></image>
 		</view>
 	</view>
@@ -53,6 +53,11 @@
 			};
 		},
 		methods: {
+			rAddTime(){
+				uni.navigateTo({
+					url:"../addTime/addTime"
+				})
+			},
 			click(index, index1) {
 				console.log(index)
 			},

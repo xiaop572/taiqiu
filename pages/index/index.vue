@@ -1,27 +1,38 @@
 <template>
 	<view class="content">
 		<image src="../../static/logo.png" mode="widthFix" class="logo"></image>
-		<text class="title">台球会所</text>
-		<button class="loginBtn" open-type="getUserInfo" @getuserinfo="getUserInfo">一键登录</button>
+		<text class="title">ASWZ网络之家</text>
+		<button class="loginBtn" @click="getUserInfo">一键登录</button>
 	</view>
 </template>
 
 <script>
 	import {
-		req
-	} from '../../util/request.js'
+		baseUrl
+	} from '../../util/config.js'
 	export default {
 		data() {
 			return {
-				code: ""
+				code: "",
+				openid:""
 			}
 		},
 		onLoad() {
 			uni.login({
 				success: (res) => {
-					console.log(res)
 					if (res.errMsg == "login:ok") {
 						this.code = res.code;
+						console.log(res)
+						uni.request({
+							url:baseUrl+'/newapi/api/WechatUser/getopenid',
+							data:{
+								id:res.code
+							},
+							success:(ress)=>{
+								this.openid=ress.data.data;
+								uni.setStorageSync('openid',ress.data.data)
+							}
+						})
 					} else {
 						uni.showToast({
 							title: '系统异常，请联系管理员!'
@@ -32,17 +43,25 @@
 		},
 		methods: {
 			getUserInfo(e) {
-				uni.getProvider({
-					service: 'oauth',
-					success(res) {
-						uni.getUserInfo({
-							provider: res.provider[0],
-							success(ress) {
-								console.log(ress)
-								uni.navigateTo({
-									url:"../register/register"
-								})
+				uni.getUserProfile({
+					desc: "aswz网络之家获取您的微信信息",
+					success:(res)=>{
+						uni.setStorageSync("userInfo",res.userInfo);
+						uni.request({
+							url:baseUrl+'/newapi/api/WechatUser/gettoken',
+							method:'POST',
+							data:{
+								...res.userInfo,
+								gender:String(res.userInfo.gender),
+								js_code:this.code,
+								openid:this.openid
+							},
+							success(r) {
+								uni.setStorageSync('token',r.data.data)
 							}
+						})
+						uni.redirectTo({
+							url:"../register/register"
 						})
 					}
 				})
@@ -76,7 +95,8 @@
 		font-size: 36rpx;
 		color: #8f8f94;
 	}
-	.loginBtn{
+
+	.loginBtn {
 		width: 80%;
 		color: #FFFFFF;
 		background: #44652e;

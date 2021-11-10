@@ -1,0 +1,23 @@
+
+page {
+	background-color: #f2f2f2;
+}
+.addTimeBox {
+	margin-top: 40rpx;
+}
+.timeList {
+	padding: 40rpx 20rpx;
+	background: #FFFFFF;
+	margin-top: 20rpx;
+}
+.left {
+	padding: 0 30rpx 0 20rpx;
+}
+.submit{
+	background: #44652e;
+	width: 80%;
+	color: #FFFFFF;
+	background: #44652e;
+	margin-top: 100rpx;
+}
+

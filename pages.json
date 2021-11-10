@@ -20,11 +20,14 @@
 		},
 		{
 			"path":"pages/timeSuper/timeSuper"
+		},
+		{
+			"path":"pages/addTime/addTime"
 		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "台球会所",
+		"navigationBarTitleText": "ASWZ网络之家",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8",
 		"app-plus": {
