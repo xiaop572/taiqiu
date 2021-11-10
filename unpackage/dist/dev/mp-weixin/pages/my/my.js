@@ -96,10 +96,17 @@ var components
 try {
   components = {
     uCellGroup: function() {
+<<<<<<< HEAD
       return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-cell-group/u-cell-group */ "node-modules/uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! uview-ui/components/u-cell-group/u-cell-group.vue */ 254))
     },
     uCellItem: function() {
       return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-cell-item/u-cell-item */ "node-modules/uview-ui/components/u-cell-item/u-cell-item").then(__webpack_require__.bind(null, /*! uview-ui/components/u-cell-item/u-cell-item.vue */ 261))
+=======
+      return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-cell-group/u-cell-group */ "node-modules/uview-ui/components/u-cell-group/u-cell-group").then(__webpack_require__.bind(null, /*! uview-ui/components/u-cell-group/u-cell-group.vue */ 108))
+    },
+    uCellItem: function() {
+      return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-cell-item/u-cell-item */ "node-modules/uview-ui/components/u-cell-item/u-cell-item").then(__webpack_require__.bind(null, /*! uview-ui/components/u-cell-item/u-cell-item.vue */ 115))
+>>>>>>> 32b844b643358b65e08e87ccfbcd92ba82958662
     }
   }
 } catch (e) {
@@ -156,7 +163,12 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var tabBar = function tabBar() {Promise.all(/*! require.ensure | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then((function () {return resolve(__webpack_require__(/*! ../../components/tabbar/tabbar.vue */ 248));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+=======
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var tabBar = function tabBar() {Promise.all(/*! require.ensure | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then((function () {return resolve(__webpack_require__(/*! ../../components/tabbar/tabbar.vue */ 102));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+>>>>>>> 32b844b643358b65e08e87ccfbcd92ba82958662
 
 
 
