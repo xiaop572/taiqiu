@@ -2,9 +2,35 @@
 	<view>
 		<u-tabs-swiper ref="uTabs" :list="list" :current="current" @change="tabsChange" :is-scroll="false" swiperWidth="750"></u-tabs-swiper>
 		<swiper :current="swiperCurrent" @transition="transition" @animationfinish="animationfinish">
-			<swiper-item class="swiper-item" v-for="(item, index) in list" :key="index">
+			<swiper-item class="swiper-item">
 				<scroll-view scroll-y style="height: 800rpx;width: 100%;" @scrolltolower="onreachBottom">
-					{{item.name}}
+					<view class="orderList">
+						<text class="ordeCode">订单号:312312313</text>
+						<text class="phone">手机号:18857731771</text>
+						<text class="peiLabel">陪练时间</text>
+						<text class="time">14:00-16:00</text>
+						<button class="jieBtn">接单</button>
+					</view>
+				</scroll-view>
+			</swiper-item>
+			<swiper-item class="swiper-item">
+				<scroll-view scroll-y style="height: 800rpx;width: 100%;" @scrolltolower="onreachBottom">
+					<view class="orderList">
+						<text class="ordeCode">订单号:312312313</text>
+						<text class="phone">手机号:18857731771</text>
+						<text class="peiLabel">陪练时间</text>
+						<text class="time">14:00-16:00</text>
+					</view>
+				</scroll-view>
+			</swiper-item>
+			<swiper-item class="swiper-item">
+				<scroll-view scroll-y style="height: 800rpx;width: 100%;" @scrolltolower="onreachBottom">
+					<view class="orderList">
+						<text class="ordeCode">订单号:312312313</text>
+						<text class="phone">手机号:18857731771</text>
+						<text class="peiLabel">陪练时间</text>
+						<text class="time">14:00-16:00</text>
+					</view>
 				</scroll-view>
 			</swiper-item>
 		</swiper>
@@ -53,5 +79,48 @@
 	}
 </script>
 
-<style>
+<style lang="less">
+	.orderList{
+		height: 240rpx;
+		padding:30rpx;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		.ordeCode{
+			display: block;
+			font-size: 32rpx;
+			color: #333;
+		}
+		.phone{
+			display: block;
+			margin-top: 10rpx;
+			font-size: 28rpx;
+			color: #333;
+		}
+		.peiLabel{
+			display: block;
+			margin-top:10rpx;
+			font-size: 28rpx;
+			color: #333;
+		}
+		.time{
+			display: block;
+			margin-top:10rpx;
+			font-size: 28rpx;
+			color: #333;
+		}
+		.jieBtn{
+			width: 200rpx;
+			height: 72rpx;
+			line-height: 72rpx;
+			font-size: 30rpx;
+			position: absolute;
+			bottom: 20rpx;
+			right: 20rpx;
+			background-color: #C83C3C;
+			color: #fff;
+		}
+	}
+	.orderList:first-child{
+		border-top: 1px solid #eee;
+	}
 </style>

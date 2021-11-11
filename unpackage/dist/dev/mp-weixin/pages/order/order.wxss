@@ -1,1 +1,44 @@
-/* pages/order/order.wxss */
+.orderList {
+  height: 240rpx;
+  padding: 30rpx;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+.orderList .ordeCode {
+  display: block;
+  font-size: 32rpx;
+  color: #333;
+}
+.orderList .phone {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.orderList .peiLabel {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.orderList .time {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.orderList .jieBtn {
+  width: 200rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 30rpx;
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+  background-color: #C83C3C;
+  color: #fff;
+}
+.orderList:first-child {
+  border-top: 1px solid #eee;
+}
+
