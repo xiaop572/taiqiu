@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/order/order",
+    "pages/index/index",
     "pages/editInfo/editInfo",
     "pages/problem/problem",
-    "pages/index/index",
     "pages/register/register",
     "pages/home/home",
     "pages/my/my",
@@ -16,5 +17,6 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

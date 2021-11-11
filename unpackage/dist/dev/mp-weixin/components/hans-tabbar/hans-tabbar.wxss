@@ -53,7 +53,7 @@
   font-size: 0;
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 .weui-tabbar__item.data-v-3e9e3b20:first-child {
   padding-left: constant(safe-area-inset-left);
