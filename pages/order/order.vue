@@ -34,11 +34,16 @@
 				</scroll-view>
 			</swiper-item>
 		</swiper>
+		<tab-bar></tab-bar>
 	</view>
 </template>
 
 <script>
+	import tabBar from '../../components/tabbar/tabbar.vue'
 	export default {
+		components: {
+			tabBar
+		},
 		data() {
 			return {
 				list: [{
