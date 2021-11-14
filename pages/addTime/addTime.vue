@@ -16,12 +16,20 @@
 		<u-picker mode="time" v-model="show" :params="params" @confirm="confirm"></u-picker>
 		<u-picker mode="time" v-model="show1" :params="params1" @confirm="confirm1"></u-picker>
 		<u-picker mode="time" v-model="show2" :params="params1" @confirm="confirm2"></u-picker>
+		<tab-bar></tab-bar>
 	</view>
 </template>
 
 <script>
+	import {
+		baseUrl
+	} from '../../util/config.js'
 	import moment from 'moment'
+	import tabBar from '../../components/tabbar/tabbar.vue'
 	export default {
+		components: {
+			tabBar
+		},
 		data() {
 			return {
 				params: {
@@ -53,18 +61,42 @@
 				this.time = `${res.year}-${res.month}-${res.day}`
 			},
 			confirm1(res) {
-				
-					console.log(res)
 				this.startTime = `${res.hour}:${res.minute}`
 			},
 			confirm2(res) {
 				this.endTime = `${res.hour}:${res.minute}`
+			},
+			submit(){
+				uni.request({
+					url:baseUrl+"/newapi/api/time/addfreetime",
+					method:"POST",
+					data:{
+						riqi:this.time,
+						sj1:this.startTime,
+						sj2:this.endTime,
+						openid:uni.getStorageSync("openid")
+					},
+					success: (res) => {
+						if(res.data.status){
+							uni.showToast({
+							    title: '添加成功',
+							    duration: 2000
+							});
+							setTimeout(()=>{
+								uni.redirectTo({
+									url:"../timeSuper/timeSuper"
+								})
+							},1500)
+						}
+					}
+				})
 			}
 		},
 		mounted() {
 			this.time = moment().format('YYYY-MM-DD');
 			this.startTime = "08:00";
 			this.endTime = "08:00"
+			
 		}
 	}
 </script>

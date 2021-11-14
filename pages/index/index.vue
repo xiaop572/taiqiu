@@ -14,23 +14,45 @@
 		data() {
 			return {
 				code: "",
-				openid:""
+				openid: ""
 			}
 		},
 		onLoad() {
+			if (uni.getStorageSync("openid")) {
+				uni.request({
+					url: baseUrl + '/newapi/api/WechatUser/getuserinfo',
+					data: {
+						openid: uni.getStorageSync('openid')
+					},
+					success: (res) => {
+						console.log(res)
+						let data = res.data.data;
+						if (data.realname && data.cardno && data.photo1) {
+							uni.navigateTo({
+								url: "../home/home"
+							})
+						} else {
+							uni.redirectTo({
+								url: "../register/register"
+							})
+						}
+					}
+				})
+
+			}
 			uni.login({
 				success: (res) => {
 					if (res.errMsg == "login:ok") {
 						this.code = res.code;
 						console.log(res)
 						uni.request({
-							url:baseUrl+'/newapi/api/WechatUser/getopenid',
-							data:{
-								id:res.code
+							url: baseUrl + '/newapi/api/WechatUser/getopenid',
+							data: {
+								id: res.code
 							},
-							success:(ress)=>{
-								this.openid=ress.data.data;
-								uni.setStorageSync('openid',ress.data.data)
+							success: (ress) => {
+								this.openid = ress.data.data;
+								uni.setStorageSync('openid', ress.data.data)
 							}
 						})
 					} else {
@@ -45,23 +67,38 @@
 			getUserInfo(e) {
 				uni.getUserProfile({
 					desc: "aswz网络之家获取您的微信信息",
-					success:(res)=>{
-						uni.setStorageSync("userInfo",res.userInfo);
+					success: (res) => {
+						uni.setStorageSync("userInfo", res.userInfo);
 						uni.request({
-							url:baseUrl+'/newapi/api/WechatUser/gettoken',
-							method:'POST',
-							data:{
+							url: baseUrl + '/newapi/api/WechatUser/gettoken',
+							method: 'POST',
+							data: {
 								...res.userInfo,
-								gender:String(res.userInfo.gender),
-								js_code:this.code,
-								openid:this.openid
+								gender: String(res.userInfo.gender),
+								js_code: this.code,
+								openid: this.openid
 							},
 							success(r) {
-								uni.setStorageSync('token',r.data.data)
+								uni.setStorageSync('token', r.data.data)
 							}
 						})
-						uni.redirectTo({
-							url:"../register/register"
+						uni.request({
+							url: baseUrl + '/newapi/api/WechatUser/getuserinfo',
+							data: {
+								openid: uni.getStorageSync('openid')
+							},
+							success: (res) => {
+								let data = res.data.data;
+								if (data.realname && data.cardno && data.photo1) {
+									uni.navigateTo({
+										url: "../home/home"
+									})
+								} else {
+									uni.redirectTo({
+										url: "../register/register"
+									})
+								}
+							}
 						})
 					}
 				})

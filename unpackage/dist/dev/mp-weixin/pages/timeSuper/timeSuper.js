@@ -153,7 +153,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var tabBar = function tabBar() {Promise.all(/*! require.ensure | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then((function () {return resolve(__webpack_require__(/*! ../../components/tabbar/tabbar.vue */ 291));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -176,38 +176,32 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-{
-  components: {
-    tabBar: tabBar },
-
-  data: function data() {
-    return {
-      list: [{
-        id: 1,
-        date: '2021-12-31',
-        time: '13:00-16:00',
-        show: false },
-      {
-        id: 1,
-        date: '2021-12-31',
-        time: '13:00-16:00',
-        show: false }],
-
-      disabled: false,
-      btnWidth: 180,
-      show: false,
-      options: [
-      {
-        text: '删除',
-        style: {
-          backgroundColor: '#dd524d' } }] };
+var _config = __webpack_require__(/*! ../../util/config.js */ 11);
 
 
-
-
-  },
-  methods: {
+var _moment = _interopRequireDefault(__webpack_require__(/*! moment */ 115));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var tabBar = function tabBar() {Promise.all(/*! require.ensure | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then((function () {return resolve(__webpack_require__(/*! ../../components/tabbar/tabbar.vue */ 262));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { tabBar: tabBar }, data: function data() {return { list: [], disabled: false, btnWidth: 180, show: false, options: [{ text: '删除', style: { backgroundColor: '#dd524d' } }] };}, methods: {
     rAddTime: function rAddTime() {
       uni.navigateTo({
         url: "../addTime/addTime" });
@@ -224,7 +218,28 @@ __webpack_require__.r(__webpack_exports__);
       this.list.map(function (val, idx) {
         if (index != idx) _this.list[idx].show = false;
       });
-    } } };exports.default = _default;
+    } },
+
+  mounted: function mounted() {var _this2 = this;
+    uni.request({
+      url: _config.baseUrl + '/newapi/api/time/getalltime',
+      method: "POST",
+      data: {
+        openid: uni.getStorageSync('openid'),
+        curpage: 1,
+        limit: 9999 },
+
+      success: function success(res) {
+        if (res.data.status) {
+          _this2.list = res.data.data;
+          _this2.list.forEach(function (item) {
+            item.startsj = (0, _moment.default)(item.startsj).format('YYYY-MM-DD HH:mm');
+            item.endsj = (0, _moment.default)(item.endsj).format('YYYY-MM-DD HH:mm');
+          });
+        }
+      } });
+
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

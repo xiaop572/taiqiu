@@ -96,10 +96,10 @@ var components
 try {
   components = {
     uUpload: function() {
-      return Promise.all(/*! import() | node-modules/uview-ui/components/u-upload/u-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-upload/u-upload")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-upload/u-upload.vue */ 262))
+      return Promise.all(/*! import() | node-modules/uview-ui/components/u-upload/u-upload */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-upload/u-upload")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-upload/u-upload.vue */ 268))
     },
     uInput: function() {
-      return Promise.all(/*! import() | node-modules/uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-input/u-input.vue */ 269))
+      return Promise.all(/*! import() | node-modules/uview-ui/components/u-input/u-input */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/uview-ui/components/u-input/u-input")]).then(__webpack_require__.bind(null, /*! uview-ui/components/u-input/u-input.vue */ 275))
     }
   }
 } catch (e) {
@@ -156,7 +156,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -183,7 +183,7 @@ var _config = __webpack_require__(/*! ../../util/config.js */ 11); //
 //
 //
 //
-var _default = { data: function data() {return { form: { mobile: '', captcha: '' }, action: _config.baseUrl + '/newapi/api/user/uploadimg', border: "1px solid #ccc" };},
+var _default = { data: function data() {return { form: { realname: '', cardno: '' }, action: _config.baseUrl + '/newapi/api/user/uploadimg', border: "1px solid #ccc" };},
   methods: {
     uploadSuccess: function uploadSuccess(data) {
       console.log(data, "上传成功");
@@ -193,11 +193,59 @@ var _default = { data: function data() {return { form: { mobile: '', captcha: ''
       files = this.$refs.uUpload.lists.filter(function (val) {
         return val.progress == 100;
       });
-      console.log(files);
-      // uni.navigateTo({
-      // 	url:"../home/home"
-      // })
-    } } };exports.default = _default;
+      var filesArr = files[0].response.Data.list;
+      if (!this.form.realname || !this.form.cardno) {
+        uni.showToast({
+          title: '信息填写不完整',
+          duration: 2000 });
+
+      }
+      if (!filesArr || filesArr.length <= 0) {
+        uni.showToast({
+          title: '请上传照片',
+          duration: 2000 });
+
+      }
+      uni.request({
+        url: _config.baseUrl + '/newapi/api/WechatUser/setuserinfo',
+        method: "POST",
+        data: {
+          openid: uni.getStorageSync('openid'),
+          realname: this.form.realname,
+          cardno: this.form.cardno,
+          mobile: "",
+          memo: "" } });
+
+
+      uni.request({
+        url: _config.baseUrl + '/newapi/api/WechatUser/setphoto',
+        method: "POST",
+        data: {
+          openid: uni.getStorageSync('openid'),
+          photo1: filesArr[0].file_path } });
+
+
+
+    } },
+
+  mounted: function mounted() {
+    uni.request({
+      url: _config.baseUrl + '/newapi/api/WechatUser/getuserinfo',
+      data: {
+        openid: uni.getStorageSync('openid') },
+
+      success: function success(res) {
+        console.log(res);
+        var data = res.data.data;
+        if (data.realname && data.cardno && data.photo1) {
+          uni.navigateTo({
+            url: "../home/home" });
+
+        }
+      } });
+
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

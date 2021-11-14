@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "u-picker": "/node-modules/uview-ui/components/u-picker/u-picker"
+    "u-picker": "/node-modules/uview-ui/components/u-picker/u-picker",
+    "tab-bar": "/components/tabbar/tabbar"
   }
 }

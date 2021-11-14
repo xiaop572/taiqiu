@@ -8,8 +8,8 @@
 			<view class="item u-border-bottom">
 				<!-- 此层wrap在此为必写的，否则可能会出现标题定位错误 -->
 				<view class="list">
-					<text class="date">{{ item.date }}</text>
-					<text class="time">{{ item.time }}</text>
+					<text class="date">{{ item.startsj }}</text>
+					<text class="time">{{ item.endsj }}</text>
 				</view>
 			</view>
 		</u-swipe-action>
@@ -21,6 +21,10 @@
 </template>
 
 <script>
+	import {
+		baseUrl
+	} from '../../util/config.js'
+	import moment from 'moment'
 	import tabBar from '../../components/tabbar/tabbar.vue'
 	export default {
 		components: {
@@ -28,17 +32,7 @@
 		},
 		data() {
 			return {
-				list: [{
-					id: 1,
-					date: '2021-12-31',
-					time: '13:00-16:00',
-					show: false
-				}, {
-					id: 1,
-					date: '2021-12-31',
-					time: '13:00-16:00',
-					show: false
-				}, ],
+				list: [],
 				disabled: false,
 				btnWidth: 180,
 				show: false,
@@ -70,6 +64,26 @@
 					if (index != idx) this.list[idx].show = false;
 				})
 			}
+		},
+		mounted(){
+			uni.request({
+				url:baseUrl+'/newapi/api/time/getalltime',
+				method:"POST",
+				data:{
+					openid:uni.getStorageSync('openid'),
+					curpage:1,
+					limit:9999
+				},
+				success: (res) => {
+					if(res.data.status){
+						this.list=res.data.data;
+						this.list.forEach(item=>{
+							item.startsj=moment(item.startsj).format('YYYY-MM-DD HH:mm');
+							item.endsj=moment(item.endsj).format('YYYY-MM-DD HH:mm')
+						})
+					}
+				}
+			})
 		}
 	};
 </script>

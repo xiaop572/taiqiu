@@ -32649,14 +32649,45 @@ webpackContext.id = 117;
 /* 264 */,
 /* 265 */,
 /* 266 */,
-/* 267 */,
+/* 267 */
+/*!************************************************!*\
+  !*** E:/wb/taiqiu/taiqiu/util/tabbarConfig.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  "color": "#999999",
+  "backgroundColor": "#ffffff",
+  "borderStyle": "black",
+  "list": [
+  {
+    "pagePath": "/pages/home/home",
+    "text": "首页",
+    "iconPath": "../../static/home.png",
+    "selectedIconPath": "../../static/home-select.png" },
+
+  {
+    "pagePath": "/pages/my/my",
+    "text": "我的",
+    "iconPath": "../../static/my.png",
+    "selectedIconPath": "../../static/my-select.png" }] };exports.default = _default;
+
+/***/ }),
 /* 268 */,
 /* 269 */,
 /* 270 */,
 /* 271 */,
 /* 272 */,
 /* 273 */,
-/* 274 */
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */
 /*!**********************************************************************!*\
   !*** E:/wb/taiqiu/taiqiu/node_modules/uview-ui/libs/util/emitter.js ***!
   \**********************************************************************/
@@ -32715,12 +32746,6 @@ function _broadcast(componentName, eventName, params) {
     } } };exports.default = _default;
 
 /***/ }),
-/* 275 */,
-/* 276 */,
-/* 277 */,
-/* 278 */,
-/* 279 */,
-/* 280 */,
 /* 281 */,
 /* 282 */,
 /* 283 */,
@@ -32736,32 +32761,7 @@ function _broadcast(componentName, eventName, params) {
 /* 293 */,
 /* 294 */,
 /* 295 */,
-/* 296 */
-/*!************************************************!*\
-  !*** E:/wb/taiqiu/taiqiu/util/tabbarConfig.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  "color": "#999999",
-  "backgroundColor": "#ffffff",
-  "borderStyle": "black",
-  "list": [
-  {
-    "pagePath": "/pages/home/home",
-    "text": "首页",
-    "iconPath": "../../static/home.png",
-    "selectedIconPath": "../../static/home-select.png" },
-
-  {
-    "pagePath": "/pages/my/my",
-    "text": "我的",
-    "iconPath": "../../static/my.png",
-    "selectedIconPath": "../../static/my-select.png" }] };exports.default = _default;
-
-/***/ }),
+/* 296 */,
 /* 297 */,
 /* 298 */,
 /* 299 */,

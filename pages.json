@@ -8,14 +8,14 @@
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/order/order"
-		},{
 			"path": "pages/index/index"
-		},{
+		}, {
+			"path": "pages/order/order"
+		}, {
 			"path": "pages/editInfo/editInfo"
-		},{
-			"path":"pages/problem/problem",
-			"style":{
+		}, {
+			"path": "pages/problem/problem",
+			"style": {
 				"navigationBarTextStyle": "white",
 				"navigationBarTitleText": "常见问题",
 				"navigationBarBackgroundColor": "#44652e"
@@ -30,12 +30,12 @@
 			"path": "pages/my/my"
 		},
 		{
-			"path":"pages/timeSuper/timeSuper"
+			"path": "pages/timeSuper/timeSuper"
 		},
 		{
-			"path":"pages/addTime/addTime"
+			"path": "pages/addTime/addTime"
 		}
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "ASWZ网络之家",

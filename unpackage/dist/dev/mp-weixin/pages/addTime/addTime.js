@@ -166,7 +166,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
 
@@ -186,6 +186,10 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+var _config = __webpack_require__(/*! ../../util/config.js */ 11);
 
 
 var _moment = _interopRequireDefault(__webpack_require__(/*! moment */ 115));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
@@ -209,7 +213,11 @@ var _moment = _interopRequireDefault(__webpack_require__(/*! moment */ 115));fun
 //
 //
 //
-var _default = { data: function data() {return { params: { year: true, month: true, day: true, hour: false, minute: false, second: false }, params1: { year: false, month: false, day: false, hour: true, minute: true, second: false }, time: "", startTime: "",
+//
+var tabBar = function tabBar() {Promise.all(/*! require.ensure | components/tabbar/tabbar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/tabbar/tabbar")]).then((function () {return resolve(__webpack_require__(/*! ../../components/tabbar/tabbar.vue */ 262));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default = { components: { tabBar: tabBar }, data: function data() {return { params: { year: true, month: true, day: true, hour: false, minute: false, second: false }, params1: { year: false, month: false, day: false, hour: true, minute: true, second: false },
+
+      time: "",
+      startTime: "",
       endTime: "",
       show: false,
       show1: false,
@@ -221,19 +229,44 @@ var _default = { data: function data() {return { params: { year: true, month: tr
       this.time = "".concat(res.year, "-").concat(res.month, "-").concat(res.day);
     },
     confirm1: function confirm1(res) {
-
-      console.log(res);
       this.startTime = "".concat(res.hour, ":").concat(res.minute);
     },
     confirm2: function confirm2(res) {
       this.endTime = "".concat(res.hour, ":").concat(res.minute);
+    },
+    submit: function submit() {
+      uni.request({
+        url: _config.baseUrl + "/newapi/api/time/addfreetime",
+        method: "POST",
+        data: {
+          riqi: this.time,
+          sj1: this.startTime,
+          sj2: this.endTime,
+          openid: uni.getStorageSync("openid") },
+
+        success: function success(res) {
+          if (res.data.status) {
+            uni.showToast({
+              title: '添加成功',
+              duration: 2000 });
+
+            setTimeout(function () {
+              uni.redirectTo({
+                url: "../timeSuper/timeSuper" });
+
+            }, 1500);
+          }
+        } });
+
     } },
 
   mounted: function mounted() {
     this.time = (0, _moment.default)().format('YYYY-MM-DD');
     this.startTime = "08:00";
     this.endTime = "08:00";
+
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
