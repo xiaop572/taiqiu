@@ -34,7 +34,7 @@
 			},
 			report() {
 				uni.navigateTo({
-					url: '/pages/report/report'
+					url: '/pages/problem/problem'
 				})
 			},
 			rEditInfo(){
